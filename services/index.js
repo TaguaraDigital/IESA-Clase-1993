@@ -46,6 +46,7 @@ export const getCategories = async () => {
       categories {
         name
         slug
+        id
       }
     }
   `
@@ -65,6 +66,7 @@ export const getPostDetails = async (slug) => {
           url
         }
         author {
+          id
           name
           bio
           photo {
@@ -73,10 +75,12 @@ export const getPostDetails = async (slug) => {
         }
         createdAt
         slug
+        id
         content {
           raw
         }
         categories {
+          id
           name
           slug
         }
@@ -104,6 +108,7 @@ export const getSimilarPosts = async (categories, slug) => {
           url
         }
         createdAt
+        id
         slug
       }
     }
@@ -126,6 +131,7 @@ export const getAdjacentPosts = async (createdAt, slug) => {
           url
         }
         createdAt
+        id
         slug
       }
       previous: posts(
@@ -138,6 +144,7 @@ export const getAdjacentPosts = async (createdAt, slug) => {
           url
         }
         createdAt
+        id
         slug
       }
     }
@@ -164,6 +171,7 @@ export const getCategoryPost = async (slug) => {
               }
             }
             createdAt
+            id
             slug
             title
             excerpt
@@ -173,6 +181,7 @@ export const getCategoryPost = async (slug) => {
             categories {
               name
               slug
+              id
             }
           }
         }
@@ -190,6 +199,7 @@ export const getFeaturedPosts = async () => {
     query GetCategoryPost() {
       posts(where: {featuredPost: true}) {
         author {
+          id
           name
           photo {
             url
@@ -201,6 +211,7 @@ export const getFeaturedPosts = async () => {
         title
         slug
         createdAt
+        id
       }
     }   
   `
@@ -226,6 +237,7 @@ export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
       comments(where: { post: { slug: $slug } }) {
+        id
         name
         createdAt
         comment
@@ -251,6 +263,7 @@ export const getRecentPosts = async () => {
         }
         createdAt
         slug
+        id
       }
     }
   `

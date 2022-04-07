@@ -1,11 +1,9 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 
 import { getPosts } from '../services'
 import { Categories, PostCard, PostWidget } from '../components'
 
-const Home: NextPage = ({ posts }) => {
+const Home = ({ posts }) => {
   return (
     <div className="container mx-auto mb-8 px-10">
       <Head>
@@ -15,7 +13,7 @@ const Home: NextPage = ({ posts }) => {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="col-span-1 grid grid-cols-1 gap-12 lg:col-span-8 lg:grid-cols-2 lg:grid-cols-2">
           {posts.map((post) => (
-            <div key={post.node} className="test">
+            <div key={post.node.id} className="test">
               <PostCard post={post.node} />
             </div>
           ))}
